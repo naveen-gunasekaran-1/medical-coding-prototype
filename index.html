@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -368,76 +369,76 @@ body {
             {
                 text: `19-year-old female with past medical history significant for recent ruptured ovarian cyst presented to ED this morning with acute onset left flank pain. Patient had dysuria for past 5-7 days, did home UA which was positive. This morning noted severe left flank pain as well as some low abdominal discomfort and distention with associated polyuria, urgency and dysuria. Has had UTIs in the past but no history of flank pain or more complicated infection. Upon arrival to ED patient was tachycardic to 110 but afebrile with other VS stable. She had a UA which was positive, otherwise labs unremarkable. Had an abdominal CT which showed a 9mm obstructing left ureteral stone and mild hydronephrosis. She was seen by urology who recommended upper tract decompression with percutaneous nephrostomy by IR, antibiotics and ICU admission due to concern for impending septic shock.`,
                 diagnosisCodes: [
-                    { code: '59010', description: 'Urinary tract infection, site not specified', confidence: 0.95 },
-                    { code: '5921', description: 'Hydronephrosis', confidence: 0.92 },
-                    { code: '591', description: 'Hydronephrosis', confidence: 0.88 },
-                    { code: '0414', description: 'Chronic hepatitis C without mention of hepatic coma', confidence: 0.78 }
-                ],
-                procedureCodes: [
-                    { code: '5503', description: 'Percutaneous nephrostomy', confidence: 0.94 }
-                ]
-            },
+            { code: 'N39.0', description: 'Urinary tract infection, site not specified', confidence: 0.95 },
+            { code: 'N13.30', description: 'Unspecified hydronephrosis', confidence: 0.92 },
+            { code: 'N20.1', description: 'Calculus of ureter', confidence: 0.88 },
+            { code: 'B18.2', description: 'Chronic viral hepatitis C', confidence: 0.78 }
+        ],
+        procedureCodes: [
+            { code: '0T973ZZ', description: 'Drainage of left kidney pelvis, percutaneous approach', confidence: 0.94 }
+        ]
+    },
             {
                 text: `54-year-old female with a history of metastatic renal cell carcinoma who presented for high dose IL-2 biotherapy and transferred to the ICU for hypotension. The patient was admitted and initiated on high dose IL-2. The patient tolerated the treatment well with some nausea and vomiting. On day 4 of treatment she developed acute renal failure with Cr 1.8, oliguria and metabolic acidosis. Patient developed unstable VT requiring chest compressions, shock and epinephrine. Patient was conversant and transferred to ICU. Patient was given an IV Amiodarone bolus and started on an infusion with direction of cardiology.`,
                 diagnosisCodes: [
-                    { code: '1970', description: 'Secondary malignant neoplasm of kidney', confidence: 0.96 },
-                    { code: '51881', description: 'Acute respiratory failure', confidence: 0.91 },
-                    { code: '78551', description: 'Cardiogenic shock', confidence: 0.89 },
-                    { code: '5849', description: 'Acute kidney failure, unspecified', confidence: 0.87 },
-                    { code: '42293', description: 'Other primary cardiomyopathies', confidence: 0.84 }
-                ],
-                procedureCodes: [
-                    { code: '3893', description: 'Venous catheterization, not elsewhere classified', confidence: 0.92 },
-                    { code: '9604', description: 'Insertion of endotracheal tube', confidence: 0.88 }
-                ]
-            },
+            { code: 'C79.02', description: 'Secondary malignant neoplasm of kidney', confidence: 0.96 },
+            { code: 'J96.00', description: 'Acute respiratory failure, unspecified whether with hypoxia or hypercapnia', confidence: 0.91 },
+            { code: 'R57.0', description: 'Cardiogenic shock', confidence: 0.89 },
+            { code: 'N17.9', description: 'Acute kidney failure, unspecified', confidence: 0.87 },
+            { code: 'I42.9', description: 'Cardiomyopathy, unspecified', confidence: 0.84 }
+        ],
+        procedureCodes: [
+            { code: '05H33DZ', description: 'Insertion of infusion device into central vein, percutaneous approach', confidence: 0.92 },
+            { code: '0BH17EZ', description: 'Insertion of endotracheal airway, via natural or artificial opening', confidence: 0.88 }
+        ]
+    },
             {
                 text: `61-year-old male with a history of RLE cellulitis, dementia, CVA, and CHF who presented with recurrent cellulitis of the right lower extremity. He is status post a recent hospitalization for this at the end of last month. At that time, he had a large RLE cellulitis/ulceration which failed treatment with po Augmentin. He was admitted and placed on Unasyn, and underwent a bedside debridement at that time. He was discharged back to his nursing home on Unasyn. Patient was taken to the OR where his wound was again debrided. They also placed VAC dressing at this time. His wound looked excellent per podiatry team.`,
                 diagnosisCodes: [
-                    { code: '6827', description: 'Other cellulitis and abscess of leg, except foot', confidence: 0.97 },
-                    { code: '70715', description: 'Osteoarthrosis, localized, not specified whether primary or secondary', confidence: 0.83 },
-                    { code: '99591', description: 'Sepsis', confidence: 0.79 },
-                    { code: '5990', description: 'Urinary tract infection, site not specified', confidence: 0.76 }
-                ],
-                procedureCodes: [
-                    { code: '8622', description: 'Excisional debridement of wound, infection, or burn', confidence: 0.95 },
-                    { code: '9907', description: 'Respiratory medication administered by nebulizer', confidence: 0.87 }
-                ]
-            },
+            { code: 'L03.115', description: 'Cellulitis of right lower limb', confidence: 0.97 },
+            { code: 'M17.9', description: 'Osteoarthritis of knee, unspecified', confidence: 0.83 },
+            { code: 'A41.9', description: 'Sepsis, unspecified organism', confidence: 0.79 },
+            { code: 'N39.0', description: 'Urinary tract infection, site not specified', confidence: 0.76 }
+        ],
+        procedureCodes: [
+            { code: '0HDNXZZ', description: 'Excision of skin and subcutaneous tissue, external approach', confidence: 0.95 },
+            { code: '3E033GC', description: 'Introduction of other therapeutic substance into respiratory tract via inhalation', confidence: 0.87 }
+        ]
+    },
             {
                 text: `45-year-old male with HIV (well controlled on ART with CD4 542 and VL<75) and pulmonary fibrosis presenting with a day of high fevers, chills, cough and post-tussive emesis. In the ED, initial VS were 105.9, 130, 126/107, 18, 98%RA. He received tylenol, motrin, ceftazidime, azithromycin, bactrim DS, tamiflu. Patient got 3L of IVF and had normal lactate of 1.3. CXR showed known fibrosis and CT head was unremarkable. Patient was empirically treated for PCP on admission, then following bronch BAL negative for PCP was decreased to prophylactic dosing.`,
                 diagnosisCodes: [
-                    { code: '042', description: 'Human immunodeficiency virus [HIV] disease', confidence: 0.98 },
-                    { code: '5172', description: 'Pulmonary congestion and hypostasis', confidence: 0.89 },
-                    { code: '4809', description: 'Pneumonia, organism unspecified', confidence: 0.86 },
-                    { code: '5849', description: 'Acute kidney failure, unspecified', confidence: 0.74 }
-                ],
-                procedureCodes: [
-                    { code: '3324', description: 'Closed endoscopic biopsy of bronchus', confidence: 0.91 },
-                    { code: '3893', description: 'Venous catheterization, not elsewhere classified', confidence: 0.85 }
-                ]
-            }
-        ];
+            { code: 'B20', description: 'HIV disease', confidence: 0.98 },
+            { code: 'J84.10', description: 'Pulmonary fibrosis, unspecified', confidence: 0.89 },
+            { code: 'J18.9', description: 'Pneumonia, unspecified organism', confidence: 0.86 },
+            { code: 'N17.9', description: 'Acute kidney failure, unspecified', confidence: 0.74 }
+        ],
+        procedureCodes: [
+            { code: '0BB88ZX', description: 'Bronchoscopy with biopsy', confidence: 0.91 },
+            { code: '05H33DZ', description: 'Insertion of infusion device into central vein, percutaneous approach', confidence: 0.85 }
+        ]
+    }
+];
 
         // Sample code cases for decoding (codes → text)
         const decodeCases = [
-            {
-                codes: "59010, 5921, 591, 5503",
-                expectedText: "Young female patient presenting with urinary tract infection complicated by hydronephrosis and ureteral obstruction requiring percutaneous nephrostomy procedure for drainage."
-            },
-            {
-                codes: "1970, 51881, 78551, 3893, 9604", 
-                expectedText: "Middle-aged female with metastatic renal cell carcinoma developing acute respiratory failure and cardiogenic shock during treatment, requiring venous access and endotracheal intubation for respiratory support."
-            },
-            {
-                codes: "6827, 8622, 9907",
-                expectedText: "Elderly male patient with lower extremity cellulitis and wound infection requiring surgical debridement and respiratory therapy with nebulizer treatments."
-            },
-            {
-                codes: "41401, 25000, 4019, 3893",
-                expectedText: "Patient with coronary atherosclerosis, diabetes mellitus, and hypertension requiring cardiac catheterization and venous access for diagnostic and therapeutic interventions."
-            }
-        ];
+    {
+        codes: "N39.0, N13.30, N20.1, 0T973ZZ",
+        expectedText: "Young female patient presenting with urinary tract infection complicated by hydronephrosis and ureteral obstruction requiring percutaneous nephrostomy procedure for drainage."
+    },
+    {
+        codes: "C79.02, J96.00, R57.0, 05H33DZ, 0BH17EZ",
+        expectedText: "Middle-aged female with metastatic renal cell carcinoma developing acute respiratory failure and cardiogenic shock during treatment, requiring venous access and endotracheal intubation for respiratory support."
+    },
+    {
+        codes: "L03.115, 0HDNXZZ, 3E033GC",
+        expectedText: "Elderly male patient with lower extremity cellulitis and wound infection requiring surgical debridement and respiratory therapy with nebulizer treatments."
+    },
+    {
+        codes: "I25.10, E11.9, I10, 05H33DZ",
+        expectedText: "Patient with coronary artery disease, diabetes mellitus, and hypertension requiring cardiac catheterization and venous access for diagnostic and therapeutic interventions."
+    }
+];
 
         let currentCaseIndex = 0;
         let currentMode = 'encode'; // 'encode' or 'decode'
