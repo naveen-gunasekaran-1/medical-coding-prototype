@@ -1,0 +1,705 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Coding & Encoding System</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #333;
+    margin: 20px;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.header {
+    background: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 6vw;
+    margin: 0;
+}
+
+.header p {
+    color: #666;
+    margin: 5px 0 0 0;
+    font-size: 3.5vw;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.panel {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    flex: 1 1 48%;
+    min-width: 300px;
+}
+
+.panel h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.input-area {
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-family: monospace;
+    font-size: 0.9rem;
+    resize: vertical;
+}
+
+.action-buttons {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 16px;
+    border: 1px solid #666;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    flex: 1 1 auto;
+}
+
+.btn-primary {
+    background: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.results-section {
+    margin-top: 20px;
+}
+
+.code-group {
+    margin-bottom: 15px;
+}
+
+.code-group h3 {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+}
+
+.code-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.code-number {
+    font-family: monospace;
+    font-weight: bold;
+    background: #eee;
+    padding: 2px 4px;
+    margin-right: 10px;
+    font-size: 0.85rem;
+}
+
+.code-description {
+    flex: 1 1 auto;
+    font-size: 0.85rem;
+    margin-right: 10px;
+}
+
+.confidence {
+    color: #008000;
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+
+.generated-text {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.sample-cases {
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.sample-cases h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.mode-selector {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.mode-selector label {
+    margin-right: 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.case-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.case-btn {
+    background: #fff;
+    border: 1px solid #999;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    flex: 1 1 120px;
+    text-align: center;
+}
+
+.case-btn.active {
+    background: #333;
+    color: white;
+}
+
+.case-title {
+    font-weight: bold;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    padding: 15px;
+}
+
+.loading.show {
+    display: block;
+}
+
+.spinner {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #333;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 5px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    border: 1px dashed #ccc;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 5.5vw;
+    }
+    .header p {
+        font-size: 3.5vw;
+    }
+
+    .input-area {
+        height: 180px;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+
+    .panel h2, .code-group h3, .sample-cases h2 {
+        font-size: 1rem;
+    }
+
+    .mode-selector label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .case-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .code-description {
+        margin-left: 0;
+        font-size: 0.8rem;
+    }
+
+    .confidence {
+        font-size: 0.7rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Medical Coding & Decoding System</h1>
+            <p>Bidirectional: Clinical Text ↔ Medical Codes</p>
+        </div>
+
+        <!-- Sample Cases -->
+        <div class="sample-cases">
+            <h2>Sample Cases & Mode Selection</h2>
+            <div class="mode-selector">
+                <label><input type="radio" name="mode" value="encode" checked onchange="switchMode()"> Text → Codes (Encoding)</label>
+                <label><input type="radio" name="mode" value="decode" onchange="switchMode()"> Codes → Text (Decoding)</label>
+            </div>
+            
+            <div class="case-buttons" id="encodeCases"> 
+                <div class="case-btn active" onclick="loadSampleCase(0)">
+                    <div class="case-title">Case 1: UTI</div>
+                </div>
+                <div class="case-btn" onclick="loadSampleCase(1)">
+                    <div class="case-title">Case 2: Cancer</div>
+                </div>
+                <div class="case-btn" onclick="loadSampleCase(2)">
+                    <div class="case-title">Case 3: Cellulitis</div>
+                </div>
+                <div class="case-btn" onclick="loadSampleCase(3)">
+                    <div class="case-title">Case 4: HIV</div>
+                </div>
+            </div>
+            
+            <div class="case-buttons" id="decodeCases" style="display: none;">
+                <div class="case-btn active" onclick="loadDecodeCase(0)">
+                    <div class="case-title">UTI Codes</div>
+                </div>
+                <div class="case-btn" onclick="loadDecodeCase(1)">
+                    <div class="case-title">Cancer Codes</div>
+                </div>
+                <div class="case-btn" onclick="loadDecodeCase(2)">
+                    <div class="case-title">Infection Codes</div>
+                </div>
+                <div class="case-btn" onclick="loadDecodeCase(3)">
+                    <div class="case-title">Cardiac Codes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Input Panel -->
+            <div class="panel">
+                <h2 id="inputTitle">Clinical Notes Input</h2>
+                <textarea 
+                    id="clinicalText" 
+                    class="input-area" 
+                    placeholder="Enter clinical notes here..."
+                ></textarea>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="processInput()" id="processBtn">
+                        Predict Codes
+                    </button>
+                    <button class="btn" onclick="clearInput()">
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="panel">
+                <h2 id="outputTitle">Predicted ICD-9 Codes</h2>
+                
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <p>Processing...</p>
+                </div>
+
+                <div id="resultsContainer">
+                    <div class="empty-state">
+                        <p>Enter text and click "Predict Codes"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample medical cases with expected codes
+        const sampleCases = [
+            {
+                text: `19-year-old female with past medical history significant for recent ruptured ovarian cyst presented to ED this morning with acute onset left flank pain. Patient had dysuria for past 5-7 days, did home UA which was positive. This morning noted severe left flank pain as well as some low abdominal discomfort and distention with associated polyuria, urgency and dysuria. Has had UTIs in the past but no history of flank pain or more complicated infection. Upon arrival to ED patient was tachycardic to 110 but afebrile with other VS stable. She had a UA which was positive, otherwise labs unremarkable. Had an abdominal CT which showed a 9mm obstructing left ureteral stone and mild hydronephrosis. She was seen by urology who recommended upper tract decompression with percutaneous nephrostomy by IR, antibiotics and ICU admission due to concern for impending septic shock.`,
+                diagnosisCodes: [
+                    { code: '59010', description: 'Urinary tract infection, site not specified', confidence: 0.95 },
+                    { code: '5921', description: 'Hydronephrosis', confidence: 0.92 },
+                    { code: '591', description: 'Hydronephrosis', confidence: 0.88 },
+                    { code: '0414', description: 'Chronic hepatitis C without mention of hepatic coma', confidence: 0.78 }
+                ],
+                procedureCodes: [
+                    { code: '5503', description: 'Percutaneous nephrostomy', confidence: 0.94 }
+                ]
+            },
+            {
+                text: `54-year-old female with a history of metastatic renal cell carcinoma who presented for high dose IL-2 biotherapy and transferred to the ICU for hypotension. The patient was admitted and initiated on high dose IL-2. The patient tolerated the treatment well with some nausea and vomiting. On day 4 of treatment she developed acute renal failure with Cr 1.8, oliguria and metabolic acidosis. Patient developed unstable VT requiring chest compressions, shock and epinephrine. Patient was conversant and transferred to ICU. Patient was given an IV Amiodarone bolus and started on an infusion with direction of cardiology.`,
+                diagnosisCodes: [
+                    { code: '1970', description: 'Secondary malignant neoplasm of kidney', confidence: 0.96 },
+                    { code: '51881', description: 'Acute respiratory failure', confidence: 0.91 },
+                    { code: '78551', description: 'Cardiogenic shock', confidence: 0.89 },
+                    { code: '5849', description: 'Acute kidney failure, unspecified', confidence: 0.87 },
+                    { code: '42293', description: 'Other primary cardiomyopathies', confidence: 0.84 }
+                ],
+                procedureCodes: [
+                    { code: '3893', description: 'Venous catheterization, not elsewhere classified', confidence: 0.92 },
+                    { code: '9604', description: 'Insertion of endotracheal tube', confidence: 0.88 }
+                ]
+            },
+            {
+                text: `61-year-old male with a history of RLE cellulitis, dementia, CVA, and CHF who presented with recurrent cellulitis of the right lower extremity. He is status post a recent hospitalization for this at the end of last month. At that time, he had a large RLE cellulitis/ulceration which failed treatment with po Augmentin. He was admitted and placed on Unasyn, and underwent a bedside debridement at that time. He was discharged back to his nursing home on Unasyn. Patient was taken to the OR where his wound was again debrided. They also placed VAC dressing at this time. His wound looked excellent per podiatry team.`,
+                diagnosisCodes: [
+                    { code: '6827', description: 'Other cellulitis and abscess of leg, except foot', confidence: 0.97 },
+                    { code: '70715', description: 'Osteoarthrosis, localized, not specified whether primary or secondary', confidence: 0.83 },
+                    { code: '99591', description: 'Sepsis', confidence: 0.79 },
+                    { code: '5990', description: 'Urinary tract infection, site not specified', confidence: 0.76 }
+                ],
+                procedureCodes: [
+                    { code: '8622', description: 'Excisional debridement of wound, infection, or burn', confidence: 0.95 },
+                    { code: '9907', description: 'Respiratory medication administered by nebulizer', confidence: 0.87 }
+                ]
+            },
+            {
+                text: `45-year-old male with HIV (well controlled on ART with CD4 542 and VL<75) and pulmonary fibrosis presenting with a day of high fevers, chills, cough and post-tussive emesis. In the ED, initial VS were 105.9, 130, 126/107, 18, 98%RA. He received tylenol, motrin, ceftazidime, azithromycin, bactrim DS, tamiflu. Patient got 3L of IVF and had normal lactate of 1.3. CXR showed known fibrosis and CT head was unremarkable. Patient was empirically treated for PCP on admission, then following bronch BAL negative for PCP was decreased to prophylactic dosing.`,
+                diagnosisCodes: [
+                    { code: '042', description: 'Human immunodeficiency virus [HIV] disease', confidence: 0.98 },
+                    { code: '5172', description: 'Pulmonary congestion and hypostasis', confidence: 0.89 },
+                    { code: '4809', description: 'Pneumonia, organism unspecified', confidence: 0.86 },
+                    { code: '5849', description: 'Acute kidney failure, unspecified', confidence: 0.74 }
+                ],
+                procedureCodes: [
+                    { code: '3324', description: 'Closed endoscopic biopsy of bronchus', confidence: 0.91 },
+                    { code: '3893', description: 'Venous catheterization, not elsewhere classified', confidence: 0.85 }
+                ]
+            }
+        ];
+
+        // Sample code cases for decoding (codes → text)
+        const decodeCases = [
+            {
+                codes: "59010, 5921, 591, 5503",
+                expectedText: "Young female patient presenting with urinary tract infection complicated by hydronephrosis and ureteral obstruction requiring percutaneous nephrostomy procedure for drainage."
+            },
+            {
+                codes: "1970, 51881, 78551, 3893, 9604", 
+                expectedText: "Middle-aged female with metastatic renal cell carcinoma developing acute respiratory failure and cardiogenic shock during treatment, requiring venous access and endotracheal intubation for respiratory support."
+            },
+            {
+                codes: "6827, 8622, 9907",
+                expectedText: "Elderly male patient with lower extremity cellulitis and wound infection requiring surgical debridement and respiratory therapy with nebulizer treatments."
+            },
+            {
+                codes: "41401, 25000, 4019, 3893",
+                expectedText: "Patient with coronary atherosclerosis, diabetes mellitus, and hypertension requiring cardiac catheterization and venous access for diagnostic and therapeutic interventions."
+            }
+        ];
+
+        let currentCaseIndex = 0;
+        let currentMode = 'encode'; // 'encode' or 'decode'
+
+        // Switch between encoding and decoding modes
+        function switchMode() {
+            const mode = document.querySelector('input[name="mode"]:checked').value;
+            currentMode = mode;
+            
+            if (mode === 'encode') {
+                // Show encoding cases, hide decoding cases
+                document.getElementById('encodeCases').style.display = 'flex';
+                document.getElementById('decodeCases').style.display = 'none';
+                
+                // Update labels
+                document.getElementById('inputTitle').textContent = 'Clinical Notes Input';
+                document.getElementById('outputTitle').textContent = 'Predicted ICD-9 Codes';
+                document.getElementById('processBtn').textContent = 'Predict Codes';
+                document.getElementById('clinicalText').placeholder = 'Enter clinical notes here...';
+                
+                // Load first encoding case
+                loadSampleCase(0);
+            } else {
+                // Show decoding cases, hide encoding cases
+                document.getElementById('encodeCases').style.display = 'none';
+                document.getElementById('decodeCases').style.display = 'flex';
+                
+                // Update labels
+                document.getElementById('inputTitle').textContent = 'ICD-9 Codes Input';
+                document.getElementById('outputTitle').textContent = 'Generated Clinical Text';
+                document.getElementById('processBtn').textContent = 'Generate Text';
+                document.getElementById('clinicalText').placeholder = 'Enter ICD-9 codes (comma-separated)...';
+                
+                // Load first decoding case
+                loadDecodeCase(0);
+            }
+            
+            clearResults();
+        }
+
+        // Load a sample case for encoding
+        function loadSampleCase(index) {
+            currentCaseIndex = index;
+            
+            // Update active button in encode cases
+            document.querySelectorAll('#encodeCases .case-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+
+            // Load text
+            document.getElementById('clinicalText').value = sampleCases[index].text;
+            clearResults();
+        }
+
+        // Load a sample case for decoding
+        function loadDecodeCase(index) {
+            currentCaseIndex = index;
+            
+            // Update active button in decode cases
+            document.querySelectorAll('#decodeCases .case-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+
+            // Load codes
+            document.getElementById('clinicalText').value = decodeCases[index].codes;
+            clearResults();
+        }
+
+        // Process input based on current mode
+        function processInput() {
+            if (currentMode === 'encode') {
+                predictCodes();
+            } else {
+                generateText();
+            }
+        }
+
+        // Predict codes from text
+        function predictCodes() {
+            const text = document.getElementById('clinicalText').value.trim();
+            
+            if (!text) {
+                alert('Please enter clinical text first.');
+                return;
+            }
+
+            showLoading('Processing...');
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                hideLoading();
+                displayCodeResults();
+            }, 1500);
+        }
+
+        // Generate text from codes
+        function generateText() {
+            const codes = document.getElementById('clinicalText').value.trim();
+            
+            if (!codes) {
+                alert('Please enter ICD-9 codes first.');
+                return;
+            }
+
+            showLoading('Generating...');
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                hideLoading();
+                displayTextResults();
+            }, 1500);
+        }
+
+        // Display code prediction results
+        function displayCodeResults() {
+            let resultsHtml = '';
+            let diagnosisCodes, procedureCodes;
+            
+            // Check if current input matches a sample case
+            const currentText = document.getElementById('clinicalText').value.trim();
+            const matchingSample = sampleCases.find(sample => sample.text === currentText);
+            
+            if (matchingSample) {
+                diagnosisCodes = matchingSample.diagnosisCodes;
+                procedureCodes = matchingSample.procedureCodes;
+            } else {
+                // Generate mock results for custom input
+                diagnosisCodes = [
+                    { code: '4019', description: 'Unspecified essential hypertension', confidence: 0.89 },
+                    { code: '25000', description: 'Diabetes mellitus without mention of complication', confidence: 0.85 },
+                    { code: '41401', description: 'Coronary atherosclerosis of native coronary artery', confidence: 0.82 }
+                ];
+                procedureCodes = [
+                    { code: '3893', description: 'Venous catheterization, not elsewhere classified', confidence: 0.91 }
+                ];
+            }
+
+            // Diagnosis codes section
+            if (diagnosisCodes && diagnosisCodes.length > 0) {
+                resultsHtml += `
+                    <div class="code-group">
+                        <h3>Diagnosis Codes</h3>
+                `;
+                
+                diagnosisCodes.forEach(item => {
+                    resultsHtml += `
+                        <div class="code-item">
+                            <span class="code-number">${item.code}</span>
+                            <span class="code-description">${item.description}</span>
+                            <span class="confidence">${(item.confidence * 100).toFixed(1)}%</span>
+                        </div>
+                    `;
+                });
+                
+                resultsHtml += '</div>';
+            }
+
+            // Procedure codes section
+            if (procedureCodes && procedureCodes.length > 0) {
+                resultsHtml += `
+                    <div class="code-group">
+                        <h3>Procedure Codes</h3>
+                `;
+                
+                procedureCodes.forEach(item => {
+                    resultsHtml += `
+                        <div class="code-item">
+                            <span class="code-number">${item.code}</span>
+                            <span class="code-description">${item.description}</span>
+                            <span class="confidence">${(item.confidence * 100).toFixed(1)}%</span>
+                        </div>
+                    `;
+                });
+                
+                resultsHtml += '</div>';
+            }
+
+            if (!resultsHtml) {
+                resultsHtml = `
+                    <div class="empty-state">
+                        <p>No codes found</p>
+                    </div>
+                `;
+            }
+
+            document.getElementById('resultsContainer').innerHTML = resultsHtml;
+        }
+
+        // Display text generation results
+        function displayTextResults() {
+            const currentCodes = document.getElementById('clinicalText').value.trim();
+            let generatedText;
+            
+            // Check if current input matches a sample decode case
+            const matchingDecodeCase = decodeCases.find(decodeCase => decodeCase.codes === currentCodes);
+            
+            if (matchingDecodeCase) {
+                generatedText = matchingDecodeCase.expectedText;
+            } else {
+                // Generate mock text for custom codes
+                generatedText = "Patient presents with multiple medical conditions requiring comprehensive evaluation and treatment. Clinical assessment indicates the need for various diagnostic and therapeutic interventions as suggested by the provided medical codes.";
+            }
+            
+            const resultsHtml = `
+                <div class="code-group">
+                    <h3>Generated Clinical Text</h3>
+                    <div class="generated-text">
+                        ${generatedText}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('resultsContainer').innerHTML = resultsHtml;
+        }
+
+        // Show loading indicator
+        function showLoading(text) {
+            document.getElementById('loadingIndicator').classList.add('show');
+            document.getElementById('loadingIndicator').querySelector('p').textContent = text;
+            document.getElementById('processBtn').disabled = true;
+            document.getElementById('processBtn').innerHTML = text;
+            document.getElementById('resultsContainer').innerHTML = '';
+        }
+
+        // Hide loading indicator
+        function hideLoading() {
+            document.getElementById('loadingIndicator').classList.remove('show');
+            document.getElementById('processBtn').disabled = false;
+            document.getElementById('processBtn').innerHTML = currentMode === 'encode' ? 'Predict Codes' : 'Generate Text';
+        }
+
+        // Clear results
+        function clearResults() {
+            const emptyMessage = currentMode === 'encode' ? 
+                'Enter text and click "Predict Codes"' : 
+                'Enter codes and click "Generate Text"';
+                
+            document.getElementById('resultsContainer').innerHTML = `
+                <div class="empty-state">
+                    <p>${emptyMessage}</p>
+                </div>
+            `;
+        }
+
+        // Clear input and results
+        function clearInput() {
+            document.getElementById('clinicalText').value = '';
+            clearResults();
+            
+            // Remove active state from all case buttons
+            document.querySelectorAll('.case-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+        }
+
+        // Initialize the app
+        function init() {
+            loadSampleCase(0);
+        }
+
+        // Initialize when page loads
+        init();
+    </script>
+</body>
+</html>
